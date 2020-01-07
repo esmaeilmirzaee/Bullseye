@@ -9,15 +9,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+  
+  @State var alertIsVisible: Bool = false
+  @State var knock_is_visible: Bool = false
+  
+  var body: some View {
+    VStack {
       Text("Welcome to my first app.")
         .fontWeight(.heavy)
         .foregroundColor(Color.red)
+      HStack {
+        Button(action: {
+          self.alertIsVisible = true
+        }) {
+          Text(/*@START_MENU_TOKEN@*/"Hit Me!"/*@END_MENU_TOKEN@*/)
+        }
+        .alert(isPresented: $alertIsVisible) { () ->
+          Alert in
+          return Alert(title: Text("Hello Message"), message: (Text("This is my first pop-up")), dismissButton: .default(Text("Awesome!")))
+        }
+        Button(action: {
+          self.knock_is_visible = true
+        }) {
+          Text("Knock Knock!")
+            .fontWeight(.black)
+        }
+        .alert(isPresented: $knock_is_visible) { () ->
+          Alert in
+          return Alert(title: Text("Joke"), message: (Text("Who's knock?")), dismissButton: .default(Text("Not funny!")))
+        }
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
