@@ -11,40 +11,68 @@ import SwiftUI
 struct ContentView: View {
   
   @State var alertIsVisible: Bool = false
-  @State var knock_is_visible: Bool = false
+  @State var slider_value: Double = 50.0
   
   var body: some View {
     VStack {
-      Text("Welcome to my first app.")
-        .fontWeight(.heavy)
-        .foregroundColor(Color.red)
+      Spacer()
+      HStack {
+        Text("Put the bullseye as close as you can to.")
+        Text("\(Int.random(in: 1...100))")
+      }
+      Spacer()
+      // Slider row
+      HStack {
+        Text("1")
+        Slider(value: self.$slider_value, in: 1...100)
+        Text("100")
+      }
+      
       HStack {
         Button(action: {
           self.alertIsVisible = true
         }) {
-          Text(/*@START_MENU_TOKEN@*/"Hit Me!"/*@END_MENU_TOKEN@*/)
+          Text("Hit me!")
+        }
+        .alert(isPresented: $alertIsVisible) { () ->
+          Alert in
+          return Alert(title: Text("Hello there!"), message: Text("\(String.init(format: "%.1f", (self.slider_value)))"), dismissButton: .default(Text("Try Again!")))
+        }
+      }
+      
+      
+      Spacer()
+      HStack {
+        Button(action: {
+          self.alertIsVisible = true
+        }) {
+          Text("Start Over!")
         }
         .alert(isPresented: $alertIsVisible) { () ->
           Alert in
           return Alert(title: Text("Hello Message"), message: (Text("This is my first pop-up")), dismissButton: .default(Text("Awesome!")))
         }
+        Spacer()
+        Text("Score:")
+        Text("999999")
+        Spacer()
+        Text("Round:")
+        Text("999")
+        Spacer()
         Button(action: {
-          self.knock_is_visible = true
+          
         }) {
-          Text("Knock Knock!")
-            .fontWeight(.black)
-        }
-        .alert(isPresented: $knock_is_visible) { () ->
-          Alert in
-          return Alert(title: Text("Who's there?"), message: (Text("Little old lady.")), dismissButton: .default(Text("Little old lady who?")))
+          Text("Info")
         }
       }
+      .padding([.leading, .trailing, .bottom], 20)
+      
     }
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ContentView().previewLayout(.fixed(width: 896, height: 414))
   }
 }
