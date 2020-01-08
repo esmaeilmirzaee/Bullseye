@@ -36,7 +36,7 @@ struct ContentView: View {
         }
         .alert(isPresented: $knock_is_visible) { () ->
           Alert in
-          return Alert(title: Text("Joke"), message: (Text("Who's knock?")), dismissButton: .default(Text("Not funny!")))
+          return Alert(title: Text("Who's there?"), message: (Text("Little old lady.")), dismissButton: .default(Text("Little old lady who?")))
         }
       }
     }
