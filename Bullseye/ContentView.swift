@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
   
   @State var alertIsVisible: Bool = false
+  @State var info_is_visible: Bool = false
   @State var slider_value: Double = 50.0
   
   var body: some View {
@@ -60,9 +61,13 @@ struct ContentView: View {
         Text("999")
         Spacer()
         Button(action: {
-          
+          self.info_is_visible = true
         }) {
           Text("Info")
+        }
+        .alert(isPresented: $info_is_visible) { () ->
+          Alert in
+          return Alert(title: Text("Bullseye"), message: Text("A simple game app."), dismissButton: .default(Text("Have fun🤓")))
         }
       }
       .padding([.leading, .trailing, .bottom], 20)
