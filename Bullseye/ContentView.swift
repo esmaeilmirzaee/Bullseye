@@ -81,7 +81,8 @@ struct ContentView: View {
   }
   
   func pointsForCurrentRound() -> Int {
-    return 100 - abs(self.target - Int(self.slider_value.rounded()))
+    let rounded_value: Int = Int(self.slider_value.rounded())
+    return 100 - abs(self.target - rounded_value)
   }
 }
 
