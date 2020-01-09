@@ -13,13 +13,14 @@ struct ContentView: View {
   @State var alertIsVisible: Bool = false
   @State var info_is_visible: Bool = false
   @State var slider_value: Double = 50.0
+  @State var target: Int = Int.random(in: 1...100)
   
   var body: some View {
     VStack {
       Spacer()
       HStack {
         Text("Put the bullseye as close as you can to.")
-        Text("\(Int.random(in: 1...100))")
+        Text("\(self.target)")
       }
       Spacer()
       // Slider row
@@ -37,7 +38,11 @@ struct ContentView: View {
         }
         .alert(isPresented: $alertIsVisible) { () ->
           Alert in
-          return Alert(title: Text("Hello there!"), message: Text("\(String.init(format: "%.1f", (self.slider_value)))"), dismissButton: .default(Text("Try Again!")))
+          var targeted_point: Int = Int(self.slider_value.rounded())
+          return Alert(title: Text("Hello there!"), message: Text(
+            "The slider's value is \(targeted_point).\n" +
+            "You scored \(pointsForCurrentRound()) point(s) this round."
+          ), dismissButton: .default(Text("Try Again!")))
         }
       }
       
@@ -73,6 +78,10 @@ struct ContentView: View {
       .padding([.leading, .trailing, .bottom], 20)
       
     }
+  }
+  
+  func pointsForCurrentRound() -> Int {
+    return 100 - abs(self.target - Int(self.slider_value.rounded()))
   }
 }
 
