@@ -26,25 +26,32 @@ struct ContentView: View {
     }
   }
   
+  struct ValueStyle: ViewModifier {
+    func body(content: Content) -> some View {
+      return content
+        .font(Font.custom("Avenir-MediumOblique ", size: 24))
+        .foregroundColor(Color.yellow)
+        .font(.body)
+    }
+  }
+  
   var body: some View {
     VStack {
       Spacer()
       HStack {
         Text("Put the bullseye as close as you can to.").modifier(LabelStyle())
-        Text("\(target)")
-          .font(.body)
-          .foregroundColor(Color.white)
+          .font(.headline)
+        Text("\(target)").modifier(LabelStyle())
+          .font(.subheadline)
       }
       Spacer()
       // Slider row
       HStack {
-        Text("1")
+        Text("1").modifier(LabelStyle())
           .font(.body)
-          .foregroundColor(Color.white)
         Slider(value: self.$slider_value, in: 1...100)
-        Text("100")
+        Text("100").modifier(LabelStyle())
           .font(.body)
-          .foregroundColor(Color.white)
       }
       
       HStack {
@@ -81,17 +88,14 @@ struct ContentView: View {
             })
         }
         Spacer()
-        Text("Score:")
+        Text("Score:").modifier(LabelStyle())
           .font(.body)
-          .foregroundColor(Color.white)
-        Text("\(score)")
+        Text("\(score)").modifier(ValueStyle())
           .font(.body)
-          .foregroundColor(Color.white)
         Spacer()
-        Text("Round:")
+        Text("Round:").modifier(LabelStyle())
           .font(.body)
-          .foregroundColor(Color.white)
-        Text("\(number_of_rounds)")
+        Text("\(number_of_rounds)").modifier(ValueStyle())
         Spacer()
         Button(action: {
           self.info_is_visible = true
