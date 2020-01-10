@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8274331323C87EBB00268850 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8274331223C87EBB00268850 /* AboutView.swift */; };
 		82F7D38F23C27F1600BD1D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7D38E23C27F1600BD1D2A /* AppDelegate.swift */; };
 		82F7D39123C27F1600BD1D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7D39023C27F1600BD1D2A /* SceneDelegate.swift */; };
 		82F7D39323C27F1600BD1D2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F7D39223C27F1600BD1D2A /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8274331223C87EBB00268850 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		82F7D38B23C27F1600BD1D2A /* Bullseye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bullseye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F7D38E23C27F1600BD1D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82F7D39023C27F1600BD1D2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				82F7D38E23C27F1600BD1D2A /* AppDelegate.swift */,
 				82F7D39023C27F1600BD1D2A /* SceneDelegate.swift */,
 				82F7D39223C27F1600BD1D2A /* ContentView.swift */,
+				8274331223C87EBB00268850 /* AboutView.swift */,
 				82F7D39423C27F1800BD1D2A /* Assets.xcassets */,
 				82F7D39923C27F1800BD1D2A /* LaunchScreen.storyboard */,
 				82F7D39C23C27F1800BD1D2A /* Info.plist */,
@@ -149,6 +152,7 @@
 				82F7D38F23C27F1600BD1D2A /* AppDelegate.swift in Sources */,
 				82F7D39123C27F1600BD1D2A /* SceneDelegate.swift in Sources */,
 				82F7D39323C27F1600BD1D2A /* ContentView.swift in Sources */,
+				8274331323C87EBB00268850 /* AboutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

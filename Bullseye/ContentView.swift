@@ -105,23 +105,18 @@ struct ContentView: View {
         Text("\(number_of_rounds)").modifier(ValueStyle())
         Spacer()
         
-        // Mark InfoButton
-        Button(action: {
-          self.info_is_visible = true
-        }) {
+        // Mark InfoButton -
+        NavigationLink(destination: AboutView()) {
           HStack {
             Image("InfoIcon")
             Text("Info")
           }
         }
-        .alert(isPresented: $info_is_visible) { () ->
-          Alert in
-          return Alert(title: Text("Bullseye"), message: Text("A simple game app."), dismissButton: .default(Text("Have fun🤓")))
-        }
       }
       .padding([.leading, .bottom, .trailing], 20)
     }
     .background(Image("Background"), alignment: .center)
+  .navigationBarTitle("Bullseye")
   }
   
   func amountOff() -> Int {
