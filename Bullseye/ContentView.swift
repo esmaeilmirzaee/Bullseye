@@ -18,19 +18,33 @@ struct ContentView: View {
   @State var score = 0
   @State var number_of_rounds = 1
   
+  struct LabelStyle: ViewModifier {
+    func body(content: Content) -> some View {
+      return content
+        .foregroundColor(Color.white)
+        .font(Font.custom("Arial Rounded MT Bold", size: 18))
+    }
+  }
+  
   var body: some View {
     VStack {
       Spacer()
       HStack {
-        Text("Put the bullseye as close as you can to.")
+        Text("Put the bullseye as close as you can to.").modifier(LabelStyle())
         Text("\(target)")
+          .font(.body)
+          .foregroundColor(Color.white)
       }
       Spacer()
       // Slider row
       HStack {
         Text("1")
+          .font(.body)
+          .foregroundColor(Color.white)
         Slider(value: self.$slider_value, in: 1...100)
         Text("100")
+          .font(.body)
+          .foregroundColor(Color.white)
       }
       
       HStack {
@@ -55,11 +69,11 @@ struct ContentView: View {
       Spacer()
       HStack {
         Button(action: {
-          self.hitme_is_visible = true
+          self.start_over_is_visible = true
         }) {
           Text("Start Over!")
         }
-        .alert(isPresented: $hitme_is_visible) { () ->
+        .alert(isPresented: $start_over_is_visible) { () ->
           Alert in
           return Alert(title: Text("New Game"), message: (Text("Have fun!")), dismissButton: .default(Text("❤️")) {
             self.score = 0
@@ -68,9 +82,15 @@ struct ContentView: View {
         }
         Spacer()
         Text("Score:")
+          .font(.body)
+          .foregroundColor(Color.white)
         Text("\(score)")
+          .font(.body)
+          .foregroundColor(Color.white)
         Spacer()
         Text("Round:")
+          .font(.body)
+          .foregroundColor(Color.white)
         Text("\(number_of_rounds)")
         Spacer()
         Button(action: {
@@ -83,8 +103,9 @@ struct ContentView: View {
           return Alert(title: Text("Bullseye"), message: Text("A simple game app."), dismissButton: .default(Text("Have fun🤓")))
         }
       }
-      .padding([.leading, .trailing, .bottom], 20)
+      .padding([.leading, .bottom, .trailing], 20)
     }
+    .background(Image("Background"), alignment: .center)
   }
   
   func amountOff() -> Int {
