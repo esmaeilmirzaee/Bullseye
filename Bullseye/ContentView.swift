@@ -41,7 +41,7 @@ struct ContentView: View {
       HStack {
         Text("Put the bullseye as close as you can to.").modifier(LabelStyle())
           .font(.headline)
-        Text("\(target)").modifier(LabelStyle())
+        Text("\(target)").modifier(ValueStyle())
           .font(.subheadline)
       }
       Spacer()
@@ -55,12 +55,13 @@ struct ContentView: View {
       }
       
       HStack {
+        // MARK - hitme button
         Button(action: {
-          self.start_over_is_visible = true
+          self.hitme_is_visible = true
         }) {
-          Text("Hit me!")
+          Text("Hit me!").modifier(LabelStyle())
         }
-        .alert(isPresented: $start_over_is_visible) { () ->
+        .alert(isPresented: $hitme_is_visible) { () ->
           Alert in
           return Alert(title: Text(alertTitle()), message: Text(
             "The slider's value is \(self.slider_value.rounded()).\n" +
@@ -71,14 +72,19 @@ struct ContentView: View {
               self.number_of_rounds += 1
             })
         }
+        .background(Image("button"))
       }
       
       Spacer()
       HStack {
+        // MARK StartOverButton
         Button(action: {
           self.start_over_is_visible = true
         }) {
-          Text("Start Over!")
+          HStack {
+            Image("StartOverIcon")
+            Text("Start Over").modifier(LabelStyle())
+          }
         }
         .alert(isPresented: $start_over_is_visible) { () ->
           Alert in
@@ -87,6 +93,7 @@ struct ContentView: View {
             self.number_of_rounds = 0
             })
         }
+        
         Spacer()
         Text("Score:").modifier(LabelStyle())
           .font(.body)
@@ -97,10 +104,15 @@ struct ContentView: View {
           .font(.body)
         Text("\(number_of_rounds)").modifier(ValueStyle())
         Spacer()
+        
+        // Mark InfoButton
         Button(action: {
           self.info_is_visible = true
         }) {
-          Text("Info")
+          HStack {
+            Image("InfoIcon")
+            Text("Info")
+          }
         }
         .alert(isPresented: $info_is_visible) { () ->
           Alert in
